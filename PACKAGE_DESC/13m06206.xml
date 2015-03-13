@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="packagedesc.xsd">
+	<name>13m06206</name>
+	<description>MDIS5 driver package for MEN M62 M-Module</description>
+	<date>2013-06-03</date>
+	<revision>2.3</revision>
+	<docroot>DRIVERS/MDIS_LL/M062/DOC/main.html</docroot>
+	<modellist>
+		<model>
+			<hwname>M62</hwname>
+			<description>16 x 12 Bit Analog Output</description>
+			<devtype>MDIS</devtype>
+			<autoid>
+				<mmoduleid>0x5346003e</mmoduleid>
+			</autoid>
+			<busif>M-Module</busif>
+		</model>
+		<model>
+			<hwname>M62N</hwname>
+			<description>16 x 12 Bit Analog Output, new revision</description>
+			<devtype>MDIS</devtype>
+			<autoid>
+				<mmoduleid>0x53467d3e</mmoduleid>
+			</autoid>
+			<busif>M-Module</busif>
+		</model>
+	</modellist>
+	<settinglist>
+		<setting>
+			<name>UNIPOL</name>
+			<description>select uni- or bipolar mode</description>
+			<type>U_INT32</type>
+			<defaultvalue>1</defaultvalue>
+			<choises>
+				<choise>
+					<value>1</value>
+					<description>unipolar [0..10V]</description>
+				</choise>
+				<choise>
+					<value>0</value>
+					<description>bipolar [-10..10V]</description>
+				</choise>
+			</choises>
+		</setting>
+		<setting>
+			<name>ID_CHECK</name>
+			<description>Define wether M-Module ID-PROM is checked</description>
+			<type>U_INT32</type>
+			<defaultvalue>1</defaultvalue>
+			<choises>
+				<choise>
+					<value>1</value>
+					<description>enable</description>
+				</choise>
+				<choise>
+					<value>0</value>
+					<description>disable -- ignore IDPROM</description>
+				</choise>
+			</choises>
+		</setting>
+	</settinglist>
+	<swmodulelist>
+		<swmodule>
+			<name>m62</name>
+			<description>Driver for M62</description>
+			<type>Low Level Driver</type>
+			<makefilepath>M062/DRIVER/COM/driver.mak</makefilepath>
+		</swmodule>
+		<swmodule>
+			<name>m62_simp</name>
+			<description>Simple example program for the M62 driver</description>
+			<type>Driver Specific Tool</type>
+			<makefilepath>M062/EXAMPLE/M62_SIMP/COM/program.mak</makefilepath>
+		</swmodule>
+		<swmodule internal="true">
+			<name>m62_main</name>
+			<description>Test program for M62 MDIS5 driver</description>
+			<type>Driver Specific Tool</type>
+			<makefilepath>M062/TEST/M62_MAIN/COM/program.mak</makefilepath>
+		</swmodule>
+	</swmodulelist>
+</package>

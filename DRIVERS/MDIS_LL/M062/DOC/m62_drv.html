@@ -1,0 +1,369 @@
+<html>
+<head>
+<title>M062 driver</title>
+<style type=text/css>
+    Body { background-color: #ffffff; }
+    A:link { color: #c50038; }
+    A:hover { color: #28669b; }
+    P, H1, H2, H3, H3, H5, LI {
+        color: #434343;
+        font-family: Arial, Helvetica, Univers;
+    }
+    P, LI { font-size: 9.000000pt; }
+</style>
+</head>
+<body>
+<h1>M062 driver</h1>
+<p>Wed Aug 25 13:45:38 WEDT 2004</p>
+<h2>Overview of all Functions</h2>
+<a name="chapt0"><a href="#intro0"><h3>Low level driver for M62 modules</h3></a>
+<TABLE border=1>
+<TR><TD><P><B>Function</B></P></TD><TD><P><B>Description</B></P></TD></TR>
+
+<TR><TD><P><a href="#M62_GetEntry">M62_GetEntry</a></P></TD><TD><P>Initialize drivers jump table </P></TD></TR>
+<TR><TD><P><a href="#M62_Init">M62_Init</a></P></TD><TD><P>Decodes descriptor , allocates and initializes the ll-driver </P></TD></TR>
+<TR><TD><P><a href="#M62_Exit">M62_Exit</a></P></TD><TD><P>Deinits HW, disables interrupts, frees allocated memory. </P></TD></TR>
+<TR><TD><P><a href="#M62_Read">M62_Read</a></P></TD><TD><P>Do nothing. </P></TD></TR>
+<TR><TD><P><a href="#M62_Write">M62_Write</a></P></TD><TD><P>Writes 2 bytes to current channel. </P></TD></TR>
+<TR><TD><P><a href="#M62_SetStat">M62_SetStat</a></P></TD><TD><P>Changes the device state. </P></TD></TR>
+<TR><TD><P><a href="#M62_GetStat">M62_GetStat</a></P></TD><TD><P>Gets the device state. </P></TD></TR>
+<TR><TD><P><a href="#M62_BlockRead">M62_BlockRead</a></P></TD><TD><P>Do nothing. </P></TD></TR>
+<TR><TD><P><a href="#M62_BlockWrite">M62_BlockWrite</a></P></TD><TD><P>Writes all channels maximal 16. Always starts with channel 0. </P></TD></TR>
+<TR><TD><P><a href="#M62_Irq">M62_Irq</a></P></TD><TD><P>Do nothing. </P></TD></TR>
+<TR><TD><P><a href="#M62_Info">M62_Info</a></P></TD><TD><P>Get information about hardware and driver requirements. </P></TD></TR>
+</TABLE>
+ 
+<a name="intro0"><h1>Low level driver for M62 modules </h1></a>
+<pre>
+Required: ---
+Switches: _ONE_NAMESPACE_PER_DRIVER_
+
+</pre>
+<a name="M62_GetEntry"><h2>Function M62_GetEntry()</h2></a>
+
+<h3>Syntax</h3>
+<pre>#ifdef _ONE_NAMESPACE_PER_DRIVER_
+    void LL_GetEntry( LL_ENTRY* drvP )
+#else
+# ifdef MAC_BYTESWAP
+    void M62_SW_GetEntry( LL_ENTRY* drvP )
+# else
+    void M62_GetEntry( LL_ENTRY* drvP )
+# endif
+#endif
+</pre><h3>Description</h3>
+<pre>Initialize drivers jump table
+
+</pre><h3>Input</h3>
+<pre>---
+</pre><h3>Output</h3>
+<pre>drvP  pointer to the initialized jump table structure
+</pre>
+<a name="M62_Init"><h2>Function M62_Init()</h2></a>
+
+<h3>Syntax</h3>
+<pre>int32 M62_Init
+(
+    DESC_SPEC       *descSpec,
+    OSS_HANDLE      *osHdl,
+    MACCESS         *ma,
+    OSS_SEM_HANDLE  *devSem,
+    OSS_IRQ_HANDLE  *irqHdl,
+    LL_HANDLE       **llHdlP
+)
+</pre><h3>Description</h3>
+<pre>Decodes descriptor , allocates and initializes the ll-driver
+structure. Initializes the hardware.
+Reads and checks the ID if it is enabled in the descriptor.
+Sets all outputs to 0V, 0mA or 4mA. (depends on HW model)
+The driver supports 16 analog output channels.
+
+Deskriptor key        Default         Range/Unit
+------------------------------------------------------------
+DEBUG_LEVEL_DESC      OSS_DBG_DEFAULT see oss_os.h
+DEBUG_LEVEL           OSS_DBG_DEFAULT see oss_os.h
+
+ID_CHECK              1               0..1    0 - disabled
+                                              1 - enabled
+
+</pre><h3>Input</h3>
+<pre>descSpec   pointer to descriptor data
+osHdl      oss handle
+ma         hw access handle
+devSem     device semaphore handle
+irqHdl     irq handle
+</pre><h3>Output</h3>
+<pre>llHdlP     ptr to low level driver handle
+return     success (0) or error code
+</pre>
+<a name="M62_Exit"><h2>Function M62_Exit()</h2></a>
+
+<h3>Syntax</h3>
+<pre>int32 M62_Exit
+(
+    LL_HANDLE **llHdlP
+)
+</pre><h3>Description</h3>
+<pre>Deinits HW, disables interrupts, frees allocated memory.
+
+</pre><h3>Input</h3>
+<pre>llHdlP    ptr to low level driver handle
+</pre><h3>Output</h3>
+<pre>return    success (0) or error code
+</pre>
+<a name="M62_Read"><h2>Function M62_Read()</h2></a>
+
+<h3>Syntax</h3>
+<pre>int32 M62_Read
+(
+    LL_HANDLE   *llHdl,
+    int32       ch,
+    int32       *valueP
+)
+</pre><h3>Description</h3>
+<pre>Do nothing.
+
+</pre><h3>Input</h3>
+<pre>llHdl   pointer to low-level driver data structure
+ch      current channel
+valueP  pointer to variable where read value stored
+</pre><h3>Output</h3>
+<pre>*valueP  read value
+return   always ERR_LL_ILL_FUNC
+</pre>
+<a name="M62_Write"><h2>Function M62_Write()</h2></a>
+
+<h3>Syntax</h3>
+<pre>int32 M62_Write
+(
+    LL_HANDLE *llHdl,
+    int32  ch,
+    int32  value
+)
+</pre><h3>Description</h3>
+<pre>Writes 2 bytes to current channel.
+
+byte structure of value
+
+   bit        15   14..5    4    3..1
+           +-----+- - - -+-----+- - -+
+meaning    | msb |       | lsb |  no |
+           +-----+- - - -+-----+- - -+
+
+</pre><h3>Input</h3>
+<pre>llHdl  pointer to low-level driver data structure
+ch     current channel 0..15
+value  output value 12 bit in the left justified word
+</pre><h3>Output</h3>
+<pre>return 0 | error code
+</pre>
+<a name="M62_SetStat"><h2>Function M62_SetStat()</h2></a>
+
+<h3>Syntax</h3>
+<pre>int32 M62_SetStat
+(
+    LL_HANDLE *llHdl,
+    int32  code,
+    int32  ch,
+    INT32_OR_64 value32_or_64
+)
+</pre><h3>Description</h3>
+<pre>Changes the device state.
+
+common codes            values          meaning
+---------------------------------------------------------------------
+M_LL_CH_DIR             M_CH_OUT        channel direction (always out)
+
+M_LL_DEBUG_LEVEL        see oss.h       enable/disable debug output
+
+specific codes          values          meaning
+---------------------------------------------------------------------
+---                     ---             ---
+
+</pre><h3>Input</h3>
+<pre>llHdl  pointer to low-level driver data structure
+code            setstat code
+ch              current channel (ignored for some codes)
+value32_or_64   setstat value or pointer to blocksetstat data
+</pre><h3>Output</h3>
+<pre>return 0 | error code
+</pre>
+<a name="M62_GetStat"><h2>Function M62_GetStat()</h2></a>
+
+<h3>Syntax</h3>
+<pre>int32 M62_GetStat
+(
+    LL_HANDLE *llHdl,
+    int32  code,
+    int32  ch,
+    INT32_OR_64 *value32_or_64P
+)
+</pre><h3>Description</h3>
+<pre>Gets the device state.
+
+common codes            values          meaning
+---------------------------------------------------------------------
+M_LL_CH_NUMBER          16              number of channels
+
+M_LL_CH_DIR             M_CH_OUT        direction of curr ch
+                                         always out
+
+M_LL_CH_LEN             12              channel length in bit
+
+M_LL_CH_TYP             M_CH_ANALOG     channel type
+
+M_LL_ID_CHECK           0 or 1          check EEPROM-Id from module
+
+M_LL_DEBUG_LEVEL        see oss.h       current debug level
+
+M_LL_ID_SIZE            128             eeprom size [bytes] 
+
+M_LL_BLK_ID_DATA        -               eeprom raw data         
+
+M_MK_BLK_REV_ID         pointer to the ident function table
+
+M_BUF_WR_WIDTH          2               channel width [byte]
+
+M_BUF_WR_MODE           M_BUF_USRCTRL   mode of write buffer
+                                        (buffer always controlled by user)
+
+specific codes          values          meaning
+---------------------------------------------------------------------
+---                     ---             ---
+
+</pre><h3>Input</h3>
+<pre>llHdl    pointer to low-level driver data structure
+code            getstat code
+ch              current channel
+value32_or_64P  pointer to variable where value stored or
+                pointer to blockgetstat data
+</pre><h3>Output</h3>
+<pre>*value32_or_64P    getstat value or pointer to blockgetstat data
+return   0 | error code
+</pre>
+<a name="M62_BlockRead"><h2>Function M62_BlockRead()</h2></a>
+
+<h3>Syntax</h3>
+<pre>int32 M62_BlockRead
+(
+    LL_HANDLE  *llHdl,
+    int32     ch,
+    void      *buf,
+    int32     size,
+    int32     *nbrRdBytesP
+)
+</pre><h3>Description</h3>
+<pre>Do nothing.
+Supported modes:  not supported
+
+</pre><h3>Input</h3>
+<pre>llHdl        pointer to low-level driver data structure
+ch           current channel (always ignored)
+buf          buffer to store read values
+size         must be multiple of buffer width (2)
+nbrRdBytesP  pointer to variable where number of read bytes
+             is stored
+</pre><h3>Output</h3>
+<pre>*nbrRdBytesP number of read bytes
+return       always ERR_LL_ILL_FUNC
+</pre>
+<a name="M62_BlockWrite"><h2>Function M62_BlockWrite()</h2></a>
+
+<h3>Syntax</h3>
+<pre>int32 M62_BlockWrite
+(
+    LL_HANDLE *llHdl,
+    int32     ch,
+    void      *buf,
+    int32     size,
+    int32     *nbrWrBytesP
+)
+</pre><h3>Description</h3>
+<pre>Writes all channels maximal 16. Always starts with channel 0.
+Supported modes:  M_BUF_USRCTRL         writes to hardware
+
+buffer structure
+
+   word     0    1..14    15
+(2 byte)  +---+- - - - -+----+
+channel   | 0 |  1..14  | 15 |
+          +---+- - - - -+----+
+
+byte structure of a word
+
+   bit        15   14..5    4    3..1
+           +-----+- - - -+-----+- - -+
+meaning    | msb |       | lsb |  no |
+           +-----+- - - -+-----+- - -+
+
+</pre><h3>Input</h3>
+<pre>llHdl  pointer to low-level driver data structure
+ch     current channel (always ignored)
+buf    buffer where output values are stored
+size   number of bytes to write (min. 2, max. 32)
+       must be multiple of buffer width (2)
+</pre><h3>Output</h3>
+<pre>nbrWrBytesP  number of written bytes
+return       0 | error code
+</pre>
+<a name="M62_Irq"><h2>Function M62_Irq()</h2></a>
+
+<h3>Syntax</h3>
+<pre>int32 M62_Irq
+(
+    LL_HANDLE *llHdl
+)
+</pre><h3>Description</h3>
+<pre>Do nothing.
+
+</pre><h3>Input</h3>
+<pre>llHdl  pointer to ll-drv data structure
+</pre><h3>Output</h3>
+<pre>return MDIS_IRQ_DEV_NOT
+</pre>
+<a name="M62_Info"><h2>Function M62_Info()</h2></a>
+
+<h3>Syntax</h3>
+<pre>int32 M62_Info
+(
+   int32  infoType,
+   ...
+)
+</pre><h3>Description</h3>
+<pre>Get information about hardware and driver requirements.
+
+Following info codes are supported:
+
+Code                      Description
+------------------------  -----------------------------
+LL_INFO_HW_CHARACTER      hardware characteristics
+LL_INFO_ADDRSPACE_COUNT   nr of required address spaces
+LL_INFO_ADDRSPACE         address space information
+LL_INFO_IRQ               interrupt required
+LL_INFO_LOCKMODE          process lock mode required
+
+The LL_INFO_HW_CHARACTER code returns all address and 
+data modes (OR'ed), which are supported from the
+hardware (MDIS_MAxx, MDIS_MDxx).
+
+The LL_INFO_ADDRSPACE_COUNT code returns the number
+of address spaces used from the driver.
+
+The LL_INFO_ADDRSPACE code returns information about one
+specific address space (MDIS_MAxx, MDIS_MDxx). The returned 
+data mode represents the widest hardware access used from 
+the driver.
+
+The LL_INFO_IRQ code returns, if the driver supports an
+interrupt routine (TRUE or FALSE).
+
+The LL_INFO_LOCKMODE code returns, which process locking
+mode is required from the driver (LL_LOCK_xxx).
+
+</pre><h3>Input</h3>
+<pre>infoType     info code
+...          argument(s)
+</pre><h3>Output</h3>
+<pre>return       success (0) or error code
+</pre></body>
+</html>

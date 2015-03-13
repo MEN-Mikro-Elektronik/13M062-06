@@ -1,0 +1,81 @@
+===== [ History of fileset ART/13M062-06/13M062-06 ] =====
+
+
+-----[ Revision 2.3 ]-----
+[ 2013-06-03 15:17:01 by Apb ]
+R: Porting to MDIS5
+M: Changed according to MDIS Porting Guide 0.9
+
+-----[ Revision 2.2 ]-----
+[ 2007-11-05 17:33:35 by ts ]
+ä
+m62_drv.c
+  added support for M62N (Range select Register), Cosmetics
+13m06206.xml
+  Descriptor UNIPOL for M62N added, default: Unipolar use (0-10V)
+
+-----[ Revision 2.1 ]-----
+[ 2006-09-01 15:28:07 by DPfeuffer ]
+m62_drv.c: M62_BlockWrite(): bug fixed, last modification was an error
+
+-----[ Revision 2.0 ]-----
+[ 2004-08-25 13:53:34 by dpfeuffer ]
+minor modifications for MDIS4/2004 conformity
+
+-----[ Revision 1.6 ]-----
+[ 2002-04-29 10:01:12 by Franke ]
+added swapped variant
+
+-----[ Revision 1.5 ]-----
+[ 2002-03-21 16:28:27 by Schmidt ]
+*** CHANGED FILES ***
+File /_CVS_/COM/DRIVERS/MDIS_LL/M062/DRIVER/COM/driver.mak RCS 1.3 -> RCS 1.4
+   modcom.h replaced with microwire.h, MAK_SWITCH added
+File /_CVS_/COM/DRIVERS/MDIS_LL/M062/DRIVER/COM/m62_drv.c RCS 1.6 -> RCS 1.8
+   M62_MemCleanup(): wrong cast fixed
+   getStatBlock(): cast added
+   changed  IdFuncTbl is located in the low level driver handle now
+   changed  use of ID module c_drvadd -> MCRW
+            whole ID PROM is now read at LL Init and
+            buffer is copied at M_LL_BLK_ID_DATA getstat call
+            (bug reset module at M_LL_BLK_ID_DATA getstat call removed)
+
+-----[ Revision 1.4 ]-----
+[ 1998-07-29 12:11:10 by Franke ]
+*** CHANGED FILES ***
+File /_CVS_/COM/DRIVERS/MDIS_LL/M062/DRIVER/COM/m62_drv.c RCS 1.2 -> RCS 1.6
+   M62_Init: ID_CHECK default is now 1
+   "Known bugs" info is now in M62_GetStat header (M_LL_BLK_ID_DATA)
+   changed to MDIS 4.1 dbg interface
+File /_CVS_/COM/DRIVERS/MDIS_LL/M062/DRIVER/COM/m62_max.dsc RCS 1.2 -> RCS 1.5
+   removed bug DESC_TYPE now U_INT32 former BINARY
+File /_CVS_/COM/DRIVERS/MDIS_LL/M062/TEST/M62_MAIN/COM/m62_main.c RCS 1.1 -> RCS 1.3
+   include <MEN/dbg.h> added, DBG_LEV2 instead of OSS_DBG_LEVEL_2
+   changed to MDIS 4.1
+
+-----[ Revision 1.3 ]-----
+[ 1998-04-14 13:34:19 by Franke ]
+*** ADDED FILES ***
+File /_CVS_/COM/DRIVERS/MDIS_LL/M062/EXAMPLE/M62_LL/COM/m62_ll.c
+File /_CVS_/COM/DRIVERS/MDIS_LL/M062/EXAMPLE/M62_LL/COM/program.mak
+File /_CVS_/COM/DRIVERS/MDIS_LL/M062/EXAMPLE/M62_SIMP/COM/m62_simp.c
+File /_CVS_/COM/DRIVERS/MDIS_LL/M062/EXAMPLE/M62_SIMP/COM/program.mak
+File /_CVS_/COM/DRIVERS/MDIS_LL/M062/TEST/M62_MAIN/COM/m62_main.c
+File /_CVS_/COM/DRIVERS/MDIS_LL/M062/TEST/M62_MAIN/COM/program.mak
+*** CHANGED FILES ***
+File /_CVS_/COM/DRIVERS/MDIS_LL/M062/DRIVER/COM/driver.mak RCS 1.1 -> RCS 1.2
+   use id.lib - not modcom.lib
+File /_CVS_/COM/DRIVERS/MDIS_LL/M062/DRIVER/COM/m62_drv.c RCS 1.1 -> RCS 1.2
+   cosmetics
+File /_CVS_/COM/DRIVERS/MDIS_LL/M062/DRIVER/COM/m62_max.dsc RCS 1.1 -> RCS 1.2
+   CH_CURRENT removed
+
+-----[ Revision 1.2 ]-----
+[ 1998-02-18 13:51:49 by franke ]
+*** ADDED FILES ***
+File /_CVS_/COM/INCLUDE/m62_drv.h
+
+-----[ Revision 1.1 ]-----
+[ 1998-02-16 15:52:51 by franke ]
+Added by mcvs
+
