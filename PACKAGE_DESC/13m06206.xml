@@ -2,8 +2,8 @@
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="packagedesc.xsd">
 	<name>13m06206</name>
 	<description>MDIS5 driver package for MEN M62 M-Module</description>
-	<date>2013-06-03</date>
-	<revision>2.3</revision>
+	<date>2016-07-14</date>
+	<revision>2.4</revision>
 	<docroot>DRIVERS/MDIS_LL/M062/DOC/main.html</docroot>
 	<modellist>
 		<model>

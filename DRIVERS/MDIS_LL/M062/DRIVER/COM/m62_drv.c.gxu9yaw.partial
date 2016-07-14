@@ -743,8 +743,7 @@ int32 M62_GetStat
     M62_HANDLE  *m62Hdl = (M62_HANDLE*) llHdl;
 
     DBGWRT_1((DBH, "%s code=$%04lx\n", functionName, code) );
-	
-	
+
     switch(code)
     {
         /* ------ common getstat codes --------- */
