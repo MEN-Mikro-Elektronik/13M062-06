@@ -643,7 +643,6 @@ int32 M62_SetStat
 )
 {
     int32       value   = (int32)value32_or_64; /* 32bit value     */
-    INT32_OR_64 valueP  = value32_or_64;        /* stores 32/64bit pointer */
 
     DBGCMD( static const char functionName[] = "LL - M62_SetStat()"; )
     M62_HANDLE *m62Hdl = (M62_HANDLE*) llHdl;
@@ -921,8 +920,10 @@ int32 M62_BlockWrite
     if( size > M62_MAX_CH )
         size = M62_MAX_CH;
 
-    for( ch=0; ch<size; ch++ )
-        MWRITE_D16( m62Hdl->ma62, OUT_REG(ch), *bufPtr++ );
+    for( ch=0; ch<size; ch++ ) {
+        MWRITE_D16( m62Hdl->ma62, OUT_REG(ch), *bufPtr );
+        bufPtr++;
+    }
 
     *nbrWrBytesP = size;
 
