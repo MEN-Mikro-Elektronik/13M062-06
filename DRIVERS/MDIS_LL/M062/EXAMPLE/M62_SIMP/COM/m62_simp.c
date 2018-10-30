@@ -13,36 +13,23 @@
  *     Switches: -
  *
  *
- *-------------------------------[ History ]---------------------------------
- *
- * $Log: m62_simp.c,v $
- * Revision 1.7  2013/06/03 15:15:22  Apb
- * R 1: Porting to MDIS5
- *   2: Syntax error on console output
- * M 1: Changed according to MDIS Porting Guide 0.9
- *   2: Syntax error corrected
- *
- * Revision 1.6  2004/08/25 13:50:48  dpfeuffer
- * minor modifications for MDIS4/2004 conformity
- *
- * Revision 1.5  2002/03/21 16:26:41  Schmidt
- * cosmetics
- *
- * Revision 1.4  1999/07/30 17:34:35  Franke
- * cosmetics
- *
- * Revision 1.3  1998/07/27 16:00:22  see
- * ramp info added
- *
- * Revision 1.2  1998/07/15 17:42:57  Franke
- * changed to MDIS 4.1
- *
- * Revision 1.1  1998/04/14 13:29:46  Franke
- * Added by mcvs
- *
  *---------------------------------------------------------------------------
  * (c) Copyright by MEN mikro elektronik GmbH, Nuernberg, Germany
  ****************************************************************************/
+/*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 2 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
 static char *RCSid="$Id: m62_simp.c,v 1.7 2013/06/03 15:15:22 Apb Exp $\n";
 

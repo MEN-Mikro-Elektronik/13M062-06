@@ -12,62 +12,23 @@
  *     Required: ---
  *     Switches: _ONE_NAMESPACE_PER_DRIVER_
  *
- *-------------------------------[ History ]---------------------------------
- *
- * $Log: m62_drv.c,v $
- * Revision 1.12  2013/06/03 15:15:20  Apb
- * R: Porting to MDIS5
- * M: Changed according to MDIS Porting Guide 0.9
- *
- * Revision 1.11  2007/11/05 17:19:07  ts
- * added support for M62N (Range select Register)
- * Cosmetics
- *
- * Revision 1.10  2006/09/01 15:27:28  DPfeuffer
- * M62_BlockWrite(): bug fixed, last modification was an error
- *
- * Revision 1.9  2004/08/25 13:50:34  dpfeuffer
- * minor modifications for MDIS4/2004 conformity
- *
- * Revision 1.8  2002/03/21 16:26:37  Schmidt
- * memCleanup(): wrong cast fixed
- * getStatBlock(): cast added
- *
- * Revision 1.7  1999/07/30 17:34:28  Franke
- * changed  IdFuncTbl is located in the low level driver handle now
- * changed  use of ID module c_drvadd -> MCRW
- *          whole ID PROM is now read at LL Init and
- *          buffer is copied at M_LL_BLK_ID_DATA getstat call
- *          (bug reset module at M_LL_BLK_ID_DATA getstat call removed)
- *
- * Revision 1.6  1998/07/29 11:36:05  Franke
- * changed LL_INFO_ADDRSPACE size from 0xff to 0x100
- *
- * Revision 1.5  1998/07/27 16:00:12  see
- * wrong static const char *IdentString type changed
- * M62_Init: ID_CHECK default is now 1
- * M62_Getstat: M_LL_ID_SIZE added
- * M62_Getstat: M_LL_BLK_ID_DATA changed (template style)
- * LL_HANDLE: unused irqHdl removed
- * some defs renamed (template style)
- * some defs added (template style)
- * "Known bugs" info is now in M62_GetStat header (M_LL_BLK_ID_DATA)
- *
- * Revision 1.4  1998/07/17 10:15:45  Franke
- * cosmetics
- *
- * Revision 1.3  1998/07/15 17:42:40  Franke
- * changed to MDIS 4.1 dbg interface
- *
- * Revision 1.2  1998/04/14 13:29:27  Franke
- * cosmetics
- *
- * Revision 1.1  1998/02/19 17:17:05  franke
- * Added by mcvs
- *
  *---------------------------------------------------------------------------
  * (c) Copyright 1995-99 by MEN mikro elektronik GmbH, Nuernberg, Germany
  ****************************************************************************/
+/*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 2 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 static const char IdentString[]="M62 - m62 low level driver: $Id: m62_drv.c,v 1.12 2013/06/03 15:15:20 Apb Exp $";
 
 #include <MEN/men_typs.h>   /* system dependend definitions   */
