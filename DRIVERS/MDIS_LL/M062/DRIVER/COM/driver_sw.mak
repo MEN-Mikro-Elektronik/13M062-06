@@ -8,18 +8,21 @@
 #    Description: makefile descriptor file for common
 #                 modules MDIS 4.0   e.g. low level driver
 #
-#---------------------------------[ History ]---------------------------------
-#
-#   $Log: driver_sw.mak,v $
-#   Revision 1.2  2004/08/25 13:50:32  dpfeuffer
-#   minor modifications for MDIS4/2004 conformity
-#
-#   Revision 1.1  2002/04/29 09:48:22  Franke
-#   Initial Revision
-#
 #-----------------------------------------------------------------------------
-#   (c) Copyright 2002 by MEN mikro elektronik GmbH, Nuernberg, Germany
+#   Copyright (c) 2002-2019, MEN Mikro Elektronik GmbH
 #*****************************************************************************
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 MAK_NAME=m62_sw
 

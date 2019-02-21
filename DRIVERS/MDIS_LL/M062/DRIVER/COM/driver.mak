@@ -6,27 +6,21 @@
 #
 #    Description: Makefile definitions for the M62 driver
 #
-#---------------------------------[ History ]---------------------------------
-#
-#   $Log: driver.mak,v $
-#   Revision 1.5  2004/08/25 13:50:30  dpfeuffer
-#   minor modifications for MDIS4/2004 conformity
-#
-#   Revision 1.4  2002/03/21 16:26:33  Schmidt
-#   modcom.h replaced with microwire.h, MAK_SWITCH added
-#
-#   Revision 1.3  1998/07/15 17:42:35  Franke
-#   added dbg lib for MDIS 4.1
-#
-#   Revision 1.2  1998/03/09 13:56:39  Schmidt
-#   use id.lib - not modcom.lib
-#
-#   Revision 1.1  1998/02/19 17:17:01  franke
-#   Added by mcvs
-#
 #-----------------------------------------------------------------------------
-#   (c) Copyright 1998 by MEN mikro elektronik GmbH, Nuernberg, Germany
+#   Copyright (c) 1998-2019, MEN Mikro Elektronik GmbH
 #*****************************************************************************
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 MAK_NAME=m62
 
