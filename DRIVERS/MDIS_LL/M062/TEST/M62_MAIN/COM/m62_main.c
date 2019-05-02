@@ -14,31 +14,23 @@
  *     Switches: VWORKS
  *
  *
- *-------------------------------[ History ]---------------------------------
- *
- * $Log: m62_main.c,v $
- * Revision 1.6  2013/06/03 15:15:26  Apb
- * R: Porting to MDIS5
- * M: Changed according to MDIS Porting Guide 0.9
- *
- * Revision 1.5  2004/08/25 13:50:50  dpfeuffer
- * minor modifications for MDIS4/2004 conformity
- *
- * Revision 1.4  1999/07/30 17:34:32  Franke
- * cosmetics
- *
- * Revision 1.3  1998/07/17 17:57:08  Schmidt
- * include <MEN/dbg.h> added, DBG_LEV2 instead of OSS_DBG_LEVEL_2
- *
- * Revision 1.2  1998/07/15 17:42:52  Franke
- * changed to MDIS 4.1
- *
- * Revision 1.1  1998/02/19 17:17:23  franke
- * Added by mcvs
- *
  *---------------------------------------------------------------------------
- * (c) Copyright 1997 by MEN mikro elektronik GmbH, Nuernberg, Germany
+ * Copyright (c) 1997-2019, MEN Mikro Elektronik GmbH
  ****************************************************************************/
+/*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 2 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
 #include <stdio.h>
 
