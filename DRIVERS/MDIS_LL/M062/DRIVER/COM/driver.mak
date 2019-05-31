@@ -1,8 +1,6 @@
 #***************************  M a k e f i l e  *******************************
 #
 #         Author: uf
-#          $Date: 2004/08/25 13:50:30 $
-#      $Revision: 1.5 $
 #
 #    Description: Makefile definitions for the M62 driver
 #
@@ -23,8 +21,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 MAK_NAME=m62
+# the next line is updated during the MDIS installation
+STAMPED_REVISION="13M062-06_02_06-5-g8c47c14-dirty_2019-05-10"
 
-MAK_SWITCH=$(SW_PREFIX)MAC_MEM_MAPPED
+DEF_REVISION=MAK_REVISION=$(STAMPED_REVISION)
+
+MAK_SWITCH=$(SW_PREFIX)MAC_MEM_MAPPED \
+		$(SW_PREFIX)$(DEF_REVISION)
 
 MAK_LIBS=$(LIB_PREFIX)$(MEN_LIB_DIR)/desc$(LIB_SUFFIX)     \
          $(LIB_PREFIX)$(MEN_LIB_DIR)/id$(LIB_SUFFIX)       \

@@ -4,8 +4,6 @@
  *      Project: MDIS5
  *
  *       Author: uf
- *        $Date: 2013/06/03 15:15:22 $
- *    $Revision: 1.7 $
  *
  *  Description: simple test of the m62 mdis driver
  *
@@ -31,7 +29,6 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-static char *RCSid="$Id: m62_simp.c,v 1.7 2013/06/03 15:15:22 Apb Exp $\n";
 
 #include <stdio.h>
 #include <string.h>
@@ -41,6 +38,8 @@ static char *RCSid="$Id: m62_simp.c,v 1.7 2013/06/03 15:15:22 Apb Exp $\n";
 #include <MEN/mdis_err.h>
 
 #include <MEN/m62_drv.h>
+
+static const char IdentString[]=MENT_XSTR(MAK_REVISION);
 
 /******************************** main **************************************
  *
@@ -77,7 +76,7 @@ static char *RCSid="$Id: m62_simp.c,v 1.7 2013/06/03 15:15:22 Apb Exp $\n";
     
     devName = argv[1];
 
-    printf("%s\n", RCSid );
+    printf("%s\n", IdentString );
     
 	/******************/
 	/*     M_open     */

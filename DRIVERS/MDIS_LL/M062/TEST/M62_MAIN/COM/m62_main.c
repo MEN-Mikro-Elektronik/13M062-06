@@ -4,8 +4,6 @@
  *      Project: MDIS5
  *
  *       Author: uf
- *        $Date: 2013/06/03 15:15:26 $
- *    $Revision: 1.6 $
  *
  *  Description: test of the m62_drv.c m62_drv.h
  *               signal handling and buffer modes

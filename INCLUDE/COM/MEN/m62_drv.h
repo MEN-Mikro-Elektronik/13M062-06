@@ -2,9 +2,7 @@
  *
  *         Name: m62_driver.h
  *
- *      $Author: Apb $
- *        $Date: 2013/06/03 15:15:33 $
- *    $Revision: 1.3 $
+ *      Author: Apb 
  *
  *  Description: Header file for M62 & M62N driver modules
  *               - M62 specific status codes

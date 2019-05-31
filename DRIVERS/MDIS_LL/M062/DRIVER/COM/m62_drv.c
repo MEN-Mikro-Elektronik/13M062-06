@@ -4,8 +4,6 @@
  *      Project: M62 module driver for MDIS5
  *
  *       Author: uf
- *        $Date: 2013/06/03 15:15:20 $
- *    $Revision: 1.12 $
  *
  *  Description: Low level driver for M62 modules
  *
@@ -29,7 +27,6 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-static const char IdentString[]="M62 - m62 low level driver: $Id: m62_drv.c,v 1.12 2013/06/03 15:15:20 Apb Exp $";
 
 #include <MEN/men_typs.h>   /* system dependend definitions   */
 #include <MEN/dbg.h>
@@ -44,6 +41,8 @@ static const char IdentString[]="M62 - m62 low level driver: $Id: m62_drv.c,v 1.
 #include <MEN/ll_defs.h>    /* low level driver definitions   */
 #include <MEN/ll_entry.h>   /* low level driver entry struct  */
 #include <MEN/m62_drv.h>    /* M62 driver header file         */
+
+static const char IdentString[]=MENT_XSTR(MAK_REVISION);
 
 
 
