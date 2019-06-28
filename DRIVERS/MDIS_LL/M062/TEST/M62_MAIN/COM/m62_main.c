@@ -44,9 +44,6 @@
 /*-----------------------------------------+
 |  DEFINES & CONST                         |
 +------------------------------------------*/
-static const int32 OFF = 0;
-static const int32 ON  = 1;
-
 static const int32 T_OK = 0;
 static const int32 T_ERROR = 1;
 
